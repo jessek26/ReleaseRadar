@@ -16,7 +16,7 @@ export async function getSpotifyToken() {
     });
 
     if (!response.ok) {
-        throw new Error(`Token fetch failed: ${reesponse.statusText}`);
+        throw new Error(`Token fetch failed: ${response.statusText}`);
     }
 
     const data = await response.json();

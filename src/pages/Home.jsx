@@ -9,17 +9,32 @@ function Home() {
 
   useEffect(() => {
     const fetchAlbums = async () => {
-      const newReleases = await getNewReleases()
-      setAlbums(newReleases);
-      setIsLoading(false);
+      try {
+        const newReleases = await getNewReleases();
+        
+        console.log("Total albums from Spotify:", newReleases.length);
+        
+        setAlbums(newReleases); 
+      } catch (err) {
+        console.error("Error fetching albums:", err);
+        setError("Failed to load music.");
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchAlbums();
   }, []);
 
-  if(isLoading) {
-    return(
-      <div>Loading new music...</div>
-    )
+  if (error) {
+    return (
+      <div className="home-page">
+        <h2>{error}</h2>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return <div>Loading new music...</div>;
   }
 
   return (
@@ -28,13 +43,12 @@ function Home() {
       <div className="rowList">
         {albums.map(album => (
           <div className="row" key={album.id}> 
-            {/* THE FIX: Just pass the album object, exactly like you did in SavedDrops! */}
             <AlbumCard album={album} />
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default Home;

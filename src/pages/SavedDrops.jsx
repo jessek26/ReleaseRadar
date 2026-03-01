@@ -2,8 +2,8 @@ import AlbumCard from "../components/AlbumCard";
 import { useSavedDrops } from "../contexts/SavedDropsContext";
 
 function SavedDrops() {
-
     const { dropList } = useSavedDrops();
+
     return(
         <main className="main-content">
             <div className="content-header">
@@ -27,4 +27,4 @@ function SavedDrops() {
     );
 };
 
-export default SavedDrops
+export default SavedDrops;

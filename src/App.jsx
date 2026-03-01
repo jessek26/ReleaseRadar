@@ -1,11 +1,11 @@
 import Header from './components/Header';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'; 
 import Home from './pages/Home';
-import Calendar from './pages/Calendar';
+import AlbumDetailsPage from './pages/AlbumDetailsPage';
 import SavedDrops from './pages/SavedDrops';
 import NotFound from './pages/NotFound';
 import { SavedDropsProvider } from './contexts/SavedDropsContext';
-
+import './App.css'
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='/calendar' element={<Calendar />}/>
+          <Route path='/album/:id' element={<AlbumDetailsPage />}/>
           <Route path='/saved-drops' element={<SavedDrops />}/>
           <Route path='*' element={<NotFound />}/>
         </Routes>
