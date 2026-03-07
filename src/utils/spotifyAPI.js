@@ -1,4 +1,3 @@
-//gets temporary token
 export async function getSpotifyToken() {
     const clientId=import.meta.env.VITE_SPOTIFY_CLIENT_ID;
     const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
@@ -40,4 +39,23 @@ export async function getNewReleases() {
 
     const data = await response.json();
     return data.albums.items;
+}
+
+export async function getAlbumById(albumId) {
+    const token = await getSpotifyToken();
+
+    const requestUrl = "https://api.spotify.com/v1/albums/" + albumId;
+
+    const response = await fetch(requestUrl, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`Single album fetch failed: ${response.statusText}`);
+    }
+
+    return await response.json();
 }

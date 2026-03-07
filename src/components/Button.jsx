@@ -1,9 +1,17 @@
-function Button({ children, onClick }) {
+import PropTypes from 'prop-types';
+
+function Button({ children, onClick, className='' }) {
     return (
-        <button className="custom-btn" onClick={onClick}>
+        <button className={className} onClick={onClick}>
             {children}
         </button>
     );
 };
 
-export default Button
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired,
+    className: PropTypes.string
+};
+
+export default Button;
