@@ -49,22 +49,29 @@ To run this application locally, ensure you have Node.js installed, then follow 
 
 ## 📂 Component Architecture
 
+## 📂 Component Architecture
+
+```
 src/
-├── components/       # Reusable UI widgets
-│   ├── AlbumCard     # Modular card displaying individual release data
-│   ├── Button        # Reusable styled button component
-│   ├── Header & Nav  # Persistent global navigation
-│   └── ProtectedRoute# Higher-Order Component (HOC) guarding private routes
-├── contexts/         # Global State
-│   ├── AuthContext   # Manages JWT/session state and user identity
-│   └── SavedDrops    # Manages the array of user-saved albums
-├── pages/            # Top-level route views
-│   ├── Home          # Public landing page and release grid
-│   ├── Login         # Authentication forms and validation logic
-│   ├── AlbumDetails  # Dynamic route (/album/:id) fetching specific data
-│   └── SavedDrops    # Protected dashboard for curated collections
+├── components/        # Reusable UI widgets
+│   ├── AlbumCard      # Modular card displaying individual release data
+│   ├── Button         # Reusable styled button component
+│   ├── Header & Nav   # Persistent global navigation
+│   └── ProtectedRoute # Higher-Order Component (HOC) guarding private routes
+│
+├── contexts/          # Global State
+│   ├── AuthContext    # Manages session state and user identity
+│   └── SavedDropsContext # Manages the array of user-saved albums
+│
+├── pages/             # Top-level route views
+│   ├── Home           # Public landing page and release grid
+│   ├── Login          # Authentication forms and validation logic
+│   ├── AlbumDetailsPage # Dynamic route (/album/:id)
+│   └── SavedDrops     # Protected dashboard for curated collections
+│
 └── utils/
-    └── spotifyAPI.js # Abstracted fetch logic and token management
+    └── spotifyAPI.js  # Abstracted fetch logic and token management
+```
 
 ---
 
